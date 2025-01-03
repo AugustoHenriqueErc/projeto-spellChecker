@@ -79,11 +79,14 @@ public class SpellChecker
     {
         if(!this.isKnownWord(newWord))
         {
-            for(int i = 0; i < dicionário.size();i++)
+            String word = "";
+            for(int i = 0; i < dicionário.size(); i++)
             {
-                 if(newWord.compareTo(dicionário.get(i)) > 0)
+                word = dicionário.get(i);
+                if(newWord.compareTo(word) > 0) 
                 {
-                      dicionário.add(newWord);  
+                    dicionário.add(newWord);
+                    break;
                 }
             }
         }
@@ -98,7 +101,11 @@ public class SpellChecker
             while(it.hasNext())
             {
                 search = it.next();
-                if(removeWord == search) it.remove();
+                if(removeWord == search)
+                {
+                    it.remove();
+                    break;
+                }
             }
         }
     }
@@ -109,8 +116,22 @@ public class SpellChecker
         {
             word = word.toLowerCase();
             String pali = new StringBuilder(word).reverse().toString();
-            if(word  == pali) return true;
+            if(word.equals(pali)) return true;
         }
         return false;
+    }
+    
+    public ArrayList<String> difference (ArrayList<String> dictionary)
+    {
+        ArrayList<String> difference = new ArrayList<>();
+        for(String word: dicionário)
+        {
+            for(String search: dictionary)
+            {
+                if(search)
+            }
+        }
+        
+        return difference;
     }
 }   
